@@ -1,0 +1,33 @@
+{
+  // Docs: https://code.visualstudio.com/docs/editor/debugging
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug task-cli",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/index.ts",
+      // Run the TypeScript directly instead of a compiled dist/ build.
+      "runtimeExecutable": "tsx",
+      // Sample CLI arguments - edit these to debug a different command.
+      "args": ["add", "buy milk"],
+      "cwd": "${workspaceFolder}",
+      // A CLI needs a real terminal for stdin and coloured output.
+      "console": "integratedTerminal",
+      // Lets breakpoints bind to the .ts source rather than generated JS.
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug current TS file",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}",
+      "runtimeExecutable": "tsx",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
